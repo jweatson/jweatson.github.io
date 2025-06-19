@@ -1,0 +1,173 @@
+{{ $ncols := 3 }}
+{{ $original := .Page.Resources.GetMatch (printf "*.jpg")}}
+{{ $counter := 1 }}
+{{ $images := .Page.Resources.ByType "image"}}
+{{ .Scratch.Set "big" ($original.Resize "2160x Lanczos webp photo") }}
+{{ $big := .Scratch.Get "big" }}
+
+{{ $exif := newScratch }}
+{{ with $original.Exif }}
+  {{ with .Date }}
+    {{ $exif.Set "date" (.Format "01/02/06") }}
+  {{ end }}
+  {{ $exif.Set "make" .Tags.Make }}
+  {{ $exif.Set "model" .Tags.Model }}
+  {{ $exif.Set "lensmake" .Tags.LensMake }}
+  {{ $exif.Set "lensmodel" .Tags.LensModel }}
+  {{ $exif.Set "focallength" .Tags.FocalLength }}
+  {{ $exif.Set "exposuretime" .Tags.ExposureTime }}
+  {{ with .Tags.ApertureValue }}
+    {{ $exif.Set "aperturevalue" (printf "f/%.1f" .) }}
+  {{ end }}
+  {{ $exif.Set "iso" .Tags.ISO }}
+  {{ $exif.Set "description" (printf "Taken %s with %s %s %s @ %smm %ss %s & ISO %d"
+    ($exif.Get "date")
+    ($exif.Get "make")
+    ($exif.Get "model")
+    ($exif.Get "lensmodel")
+    ($exif.Get "focallength")
+    ($exif.Get "exposuretime")
+    ($exif.Get "aperturevalue")
+    ($exif.Get "iso")) }}
+{{ end }}
+{{ $description := $exif.Get "description" }}
+
+<script>
+  let current_filename = {{ $big.RelPermalink }};
+  let current_description = {{ $description }};
+  function updateImage() {
+    document.getElementById("large_image").src = current_filename;
+    
+  }
+
+  function updateDescription() {
+    document.getElementById("image_description").innerText = current_description;
+  }
+  
+  document.addEventListener("DOMContentLoaded", (event) => {
+    updateImage();
+    updateDescription();
+  });
+  
+  function changeFilename(filename,description) {
+    current_filename = filename;
+    current_description = description;
+    console.log("Image: " + filename);
+    console.log ("Description: " + description);
+    updateImage();
+    updateDescription();
+    window.scrollTo({
+      top: document.getElementById("large_image").offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+</script>
+
+<div>
+  <img id="large_image"
+  src="{{ $big.RelPermalink }}"
+  alt="Large Image"
+  style="width: 100%"
+  loading="lazy"
+  >
+</div>
+
+<hr style="margin: 0px;">
+<figcaption>
+  <hr style="margin: 0px; border-top: 0px; ">
+  <small>
+    <span id="image_description">{{ $description }}</span>
+  </small>
+</figcaption>
+<hr style="margin: 0px;">
+
+<br>
+
+{{ range $images}}
+  {{ if eq $counter 1 }}
+  <div class="row">
+  {{ end }}
+  
+  {{ $image := .}}
+  {{ $imagescratch := newScratch }}
+
+  
+  {{ with $image }}
+    {{ with .Fill "360x450 Lanczos png"}}
+    {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "81A1C1" "5E81AC" "2E3440") }}
+    {{ $filter := images.Dither $opts }}
+    {{ with images.Filter $filter . }}
+      {{ $imagescratch.Set "thumbnail_nohover" .RelPermalink }}
+    {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $image }}
+    {{ with .Fill "360x450 Lanczos png"}}
+    {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "D08770" "BF616A" "2E3440") }}
+    {{ $filter := images.Dither $opts }}
+    {{ with images.Filter $filter . }}
+      {{ $imagescratch.Set "thumbnail_hover" .RelPermalink }}
+    {{ end}}
+    {{ end }}
+  {{ end }}
+
+  {{ with $image }}
+    {{ with .Resize "1440x Lanczos webp photo q90"}}
+      {{ $imagescratch.Set "large_image" .RelPermalink }}
+    {{ end }}
+  {{ end }}
+
+  {{ $exif := newScratch }}
+  {{ with $image.Exif }}
+    {{ with .Date }}
+      {{ $exif.Set "date" (.Format "01/02/06") }}
+    {{ end }}
+    {{ $exif.Set "make" .Tags.Make }}
+    {{ $exif.Set "model" .Tags.Model }}
+    {{ $exif.Set "lensmake" .Tags.LensMake }}
+    {{ $exif.Set "lensmodel" .Tags.LensModel }}
+    {{ $exif.Set "focallength" .Tags.FocalLength }}
+    {{ $exif.Set "exposuretime" .Tags.ExposureTime }}
+    {{ with .Tags.ApertureValue }}
+      {{ $exif.Set "aperturevalue" (printf "f/%.1f" .) }}
+    {{ end }}
+    {{ $exif.Set "iso" .Tags.ISO }}
+    {{ $exif.Set "description" (printf "Taken %s with %s %s %s @ %smm %ss %s & ISO %d"
+      ($exif.Get "date")
+      ($exif.Get "make")
+      ($exif.Get "model")
+      ($exif.Get "lensmodel")
+      ($exif.Get "focallength")
+      ($exif.Get "exposuretime")
+      ($exif.Get "aperturevalue")
+      ($exif.Get "iso")) }}
+  {{ end }}
+  {{ $description := $exif.Get "description" }}
+
+  <div class="four columns" style="text-align: center;">
+    <span>
+      <picture>
+          <img
+          class="inline-img"
+          style="width: 100%"
+          src="{{ $imagescratch.Get "thumbnail_nohover" }}"
+          onmouseover="this.src={{ $imagescratch.Get "thumbnail_hover" }}"
+          onmouseout="this.src={{ $imagescratch.Get "thumbnail_nohover" }}"
+          onclick="changeFilename({{ $imagescratch.Get "large_image" }},{{ $description }})"
+          loading="lazy"
+          >
+      </picture>
+    </span>
+    <p></p>
+  </div>
+
+  {{ if eq $counter $ncols }}
+  </div>
+  {{ $counter = 1 }}
+  {{ else}}
+  {{ $counter = add $counter 1 }}
+  {{ end }}
+{{ end }}
+</div>

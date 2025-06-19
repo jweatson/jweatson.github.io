@@ -1,0 +1,51 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+  <div class="row" style="text-align: center;">
+      <a href="/photos" style="text-align: center;">
+          ↩ Go Back to Photos
+      </a>
+      <h3>{{ .Params.Title }}</h3>
+      {{ if .Params.Date }}
+      {{ if not .Params.portfolio }}
+      <p style="margin-bottom: 0px;">
+        Taken: <i>{{ .Date | time.Format ":date_full" }}</i>
+      </p>
+      {{ end }}
+      {{ end }}
+      {{ if .Params.tags}}
+      <p style="margin-bottom: 0px;">
+        Filed under: <i>{{ partial "tags.html" .}}</i>
+      </p>
+      {{ end}}
+  </div>
+  <hr>
+  <div class="row">
+    {{ .Content }}
+    
+    {{ if not .Params.portfolio }}
+    <div class="row">
+      <div class="six columns" style="text-align: left;">
+        {{ if .Prev }}
+        <a href="{{ .Prev.RelPermalink }}">← {{ .Prev.Title }}</a>
+        {{ end }}
+      </div>
+      
+      <div class="six columns" style="text-align: right;">
+        {{ if .Next }}
+        <a href="{{ .Next.RelPermalink }}">{{ .Next.Title }} →</a>
+        {{ end}}
+      </div>
+    </div>
+    {{ end}}
+    
+  </div>
+
+  <div class="row" style="text-align: center;">
+    <a href="/photos" style="text-align: center;">
+      ↩ Go Back to Photos
+    </a>
+  </div>
+</div>
+
+{{ partial "footer.html" }}

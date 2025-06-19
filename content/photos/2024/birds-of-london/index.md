@@ -5,9 +5,4 @@ tags: ["nature","conference","photography","urban"]
 thumb: "london-birds-1"
 ---
 
-{{< photo london-birds-1.jpg />}}
-{{< photo london-birds-2.jpg />}}
-{{< photo london-birds-3.jpg />}}
-{{< photo london-birds-4.jpg />}}
-{{< photo london-birds-5.jpg />}}
-{{< photo london-birds-6.jpg />}}
+{{< gallery >}}

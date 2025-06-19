@@ -3,33 +3,35 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>J W Eatson</title>
+  <title>Joseph Eatson</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
+  
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+  
   <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet" /> 
-
+  
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+  
   {{ $skeletonstyle := resources.Get "css/skeleton.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $skeletonstyle.Permalink }}">
-  <!-- {{ $normalizestyle := resources.Get "css/normalize.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $normalizestyle.Permalink }}"> -->
   
-
+  <!-- Theme color -->
+  <meta name="theme-color" content="#ECEFF4">
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/header-icon/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/header-icon/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/header-icon/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/header-icon/favicon/site.webmanifest">
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />  
 
 </head>

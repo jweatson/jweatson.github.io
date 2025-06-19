@@ -4,8 +4,10 @@ date: {{ .Date }}
 tags: [""]
 toc: false
 math: false
-thumb: ""
+thumb: "FILL THIS OUT"
 ---
+
+{{< gallery >}}
 
 <!--more--> 
 <!-- Anything below this is excluded from the summary -->

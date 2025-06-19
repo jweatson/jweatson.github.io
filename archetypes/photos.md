@@ -4,3 +4,5 @@ date: {{ .Date }}
 tags: [""]
 thumb: ""
 ---
+
+{{< gallery >}}

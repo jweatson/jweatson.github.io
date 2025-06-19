@@ -1,30 +1,53 @@
 {{ if isset .Params "thumb" }}
+  {{ $link := .Permalink }}
   {{ $thumbnail := .Params.thumb }}
   {{ $thumbnail := .Resources.GetMatch (printf "*%s*" ($thumbnail)) }}
-  {{ .Scratch.Set "thumbbig" ($thumbnail.Fill "720x720 Lanczos webp photo") }}
-  {{ .Scratch.Set "thumbsmall" ($thumbnail.Fill "480x480 Lanczos webp photo") }}
-  {{ $thumbbig := .Scratch.Get "thumbbig" }}
-  {{ $thumbsmall := .Scratch.Get "thumbsmall" }}
-  <span>
-    <picture>
-      <source
-          srcset="{{ $thumbbig.RelPermalink }}"
-          media="(min-width: 720px)"
-          type="image/webp"
-        />
-      <source
-        srcset="{{ $thumbsmall.RelPermalink }}"
-        type="image/webp"
-        />
-      <a href="{{ .Permalink }}" style="text-decoration: none;">
-        <img
+  {{ $headerScratch := newScratch }}
+
+
+  {{ with $thumbnail }}
+  {{ with .Fill "360x450 Lanczos png"}}
+  {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "81A1C1" "5E81AC" "2E3440") }}
+  {{ $filter := images.Dither $opts }}
+  {{ with images.Filter $filter . }}
+    {{ $headerScratch.Set "thumbnail_nohover" .RelPermalink }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+
+  {{ with $thumbnail }}
+  {{ with .Fill "360x450 Lanczos png"}}
+  {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "D08770" "BF616A" "2E3440") }}
+  {{ $filter := images.Dither $opts }}
+  {{ with images.Filter $filter . }}
+    {{ $headerScratch.Set "thumbnail_hover" .RelPermalink }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  
+  <div class="four columns" style="text-align: center;">
+    <span>
+      <picture>
+        <a href="{{ $link }}" style="text-decoration: none;">
+          <img
           class="inline-img"
-          style="width: 31%; "
-          src="{{ $thumbsmall.RelPermalink }}"
+          style="width: 100%"
+          src="{{ $headerScratch.Get "thumbnail_nohover" }}"
+          onmouseover="this.src={{ $headerScratch.Get "thumbnail_hover" }}"
+          onmouseout="this.src={{ $headerScratch.Get "thumbnail_nohover" }}"
           loading="lazy"
-        >
+          >
+        </a>
+      </picture>
+    </span>
+  <p>
+    <small>
+      <a href="{{ $link }}">
+        {{ .Params.Title }}
       </a>
-    </picture>
-  </span>
+    </small>
+  </p>
+  </div>
 
 {{ end }}
+

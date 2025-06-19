@@ -1,0 +1,12 @@
+<div class="row">
+  <b>
+    {{ .type }}: {{ if .title }}{{ .title | safeHTML }}<br>{{ end }}
+  </b>
+  {{ if .name }}{{ .name }}, {{ end }}{{ .location }} ({{ .date }})
+
+  <!-- <b>
+    <a href="https://doi.org/{{.doi}}" target="_blank">{{ .title | safeHTML }}</a>
+  </b>
+  <br style="padding: 0;">
+  {{ .authors | safeHTML }} ({{ .year }}) {{ .journal }}, {{ .volume }}, {{ .issue }} ({{ .pages }}). <a href="{{.ads}}" target="_blank">ADS</a> -->
+</div>

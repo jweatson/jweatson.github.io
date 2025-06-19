@@ -1,0 +1,36 @@
+{{ partial "header.html" . }}
+
+<!-- Load MathJax if "math = true" in markdown document -->
+{{ if .Params.Math }}
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+{{ end }}
+
+<div class="container">
+  <div class="row article-details" style="text-align: center;">
+    <a href="/research" style="text-align: center;">
+      ↩ Go Back to Research
+    </a>
+      <div class="row">
+        <h3>{{ .Params.Title | safeHTML }}</h3>
+      </div>
+      <div class="row">
+        <!-- <p style="margin-bottom: 0px;">
+          Published: <i>{{ .Date | time.Format ":date_full" }}</i>
+        </p> -->
+        <!-- <p style="margin-bottom: 0px;">
+          Filed under: <i>{{ partial "tags.html" .}}</i>
+        </p> -->
+      </div>
+      {{ partial "wordcount.html" . }}
+  </div>
+
+  {{ partial "toc.html" . }}
+  
+  <div class="row">
+    {{ .Content }}
+  </div>
+</div>
+
+{{ partial "footer.html" }}

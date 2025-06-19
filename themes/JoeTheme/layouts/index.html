@@ -2,119 +2,32 @@
 
 <div class="container">
   <div class="row">
+    <img src="/it-me.webp" alt="It's me!" style="width: 100%;">
+  </div>
+</div>
+
+<div class="container" style="text-align: center;">
+
+  <div class="row" style="margin-top: 0.5em;">
+    <h3>Work</h3>
     <p>
-      <i>Hello there! My name is Joseph.</i>
+    <a href="https://orcid.org/0000-0002-5160-8871" target="_blank">ORCID</a>
     </p>
     <p>
-      I am a postdoctoral researcher with research interests in star and planet formation.
+    <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Eatson%2C%20Joseph%20W.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">Publications</a> - 
+    <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22%5EEatson%2C%20Joseph%20W.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">as first author</a>
     </p>
     <p>
-      I also tend to publish some of my photos here.
+    <a href="https://github.microlens.ing" target="_blank">GitHub - @jweatson</a>
     </p>
-  </div>
-
-  <!-- <hr>
-  <h2>
-    Projects
-  </h2>
-  <div class="row">
-    {{ range first 5 ( where .Site.RegularPages "Section" "projects" ) }} 
-      <h4><a href="{{.Permalink}}">{{.Title}}</a></h4>
-      {{ if isset .Params "thumb" }}
-        {{ partial "thumbnail.html" . }}
-      {{ end }}
-    {{ end }}
-  </div> -->
-
-  <hr>
-  <h2>
-    Publications
-  </h2>
-  <div class="row">
-    <small>
-      <ul class="uni-list"style="list-style-position: outside; margin-left: 32px;">
-        <li>
-          <i>
-            Eatson, Lichtenberg, Parker & Gerya (MNRAS, 2024)
-            <br>
-            <a href="https://ui.adsabs.harvard.edu/abs/2024MNRAS.528.6619E/abstract">
-              Devolatilization of extrasolar planetesimals by <sup>60</sup>Fe and <sup>26</sup>Al heating
-            </a>
-          </i>
-        </li>
-        <li>
-          <i><b>
-            Eatson (<u>PhD Thesis</u>, University of Leeds, 2023)
-            <br>
-            <a href="https://etheses.whiterose.ac.uk/32292/">
-              Numerical Simulations of Dusty Colliding Wind Binaries
-            </a>
-          </b></i>
-        </li>
-        <li>
-          <i>
-            Eatson, Pittard & Van Loo (MNRAS, 2022b)
-            <br>
-            <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.517.4705E/abstract">
-              Exploring dust formation in the episodic WCd system WR140
-            </a>
-          </i>
-        </li>
-        <li>
-          <i>
-            Eatson, Pittard & Van Loo (MNRAS, 2022a)
-            <br>
-            <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.6132E/abstract">
-              An exploration of dust formation within WCd systems using an advected scalar dust model
-            </a>
-          </i>
-        </li>
-      </ul>
-    </small>
-  </div>
-
-  <!-- <hr>
-  <h2>
-    Recent Posts
-  </h2> -->
-
-  <!-- <div class="row">
-    {{ range first 5 ( where .Site.RegularPages "Section" "posts" ) }}  
-      <h4><a href="{{.Permalink}}">{{.Title}}</a></h4>
-      <p>
-        <small>
-          <i>{{.Date.Format "02/01/2006"}}</i>
-        </small>
-      </p>
-      <p>
-        <small>
-          <i>
-            {{ .Summary }}
-          </i>
-          <a href="{{ .Permalink }}">
-              <i>
-                  Keep reading...
-              </i>
-          </a>
-        </small>
-      </p>
-    {{ end }}
-  </div> -->
-
-  <hr>
-  <h2>Photos</h2>
-
-  <div class="row photowall">
-    {{ range ( where .Site.RegularPages "Section" "photos" ) }}
-      {{ partial "index-gallery.html" . }}
-    {{ end }}
-  </div>
-  <!-- <div class="row photowall">
-    {{ range first 3 ( after 3 (where .Site.RegularPages "Section" "photos" )) }}
-      {{ partial "index-gallery.html" . }}
-    {{ end }}
-  </div> -->
-
+    <h3>Social Media</h3>
+    <p>
+    <a href="https://instagram.microlens.ing" target="_blank">Instagram - @jweatson</a>
+    </p>
+    <!-- <p>
+    <a href="https://bsky.app/profile/microlens.ing" target="_blank">Bluesky - @microlens.ing</a>
+    </p> -->
+    </div>
 </div>
 
 {{ partial "footer.html"}}

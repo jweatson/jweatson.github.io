@@ -1,193 +1,67 @@
 {{ partial "header.html" . }}
 
-<section class="container">
-  <section class="row">
-    <section class="four columns">
-      <img
-        src="/about/about-me.webp"
-        alt="" class="about-img"
-      />
-      <p></p>
-      <center>
-        <h4 class = "about-name">
-          Joseph Eatson
-        </h4>
-        <h5 class = "about-pronouns">
-          (He/They)
-        </h5>
-        <h5 class="about-institution">
-          University of Sheffield
-        </h5>
-      </center>
-    </section>
+<div class="container">
+  <div class="row">
+    <img src="/it-me.webp" alt="It's me!" style="width: 100%;">
+  </div>
+</div>
 
-    <section class="eight columns">
-      <h2>Bio</h2>
-      <p>
-        Joseph Eatson is a planetary formation postdoctoral researcher at the University of Sheffield. He was born approximately {{ div (sub now.Unix 795657600) 1000000 }} megaseconds ago (as of the last time this website was built).
-      </p>
+<section class="container" style="text-align: left;">
 
-      <section class="row">
-        <section class="six columns">
-          <h5>Interests</h5>
-          <ul style="list-style-position: outside; margin-left: 32px;">
-            <li>
-              Numerical simulation
-            </li>
-            <li>
-              Planet formation
-            </li>
-            <li>
-              Star cluster evolution
-            </li>
-            <li>
-              Photography
-            </li>
-            <li>
-              Wasting my money on cameras
-            </li>
-          </ul>
-        </section>
-      
-        <section class="six columns">
-          <h5>Education</h5>
-          <ul style="list-style-position: outside; margin-left: 32px;">
-            <li class="uni-list">
-              PhD in Astrophysics
-              <p style="font-size: 0.8em; font-style: italic; margin-bottom: 0rem;">
-                University of Leeds, 2022
-              </p>
-              <p style="font-size: 0.8em; font-style: italic; margin-bottom: 0rem;">
-                <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.6132E/abstract">Numerical Simulations of Dusty Colliding Wind Binaries</a> 
-              </p>
-            </li>
-            <li class="uni-list">
-              MPhys in Astrophysics
-              <p style="font-size: 0.8em; font-style: italic; margin-bottom: 0rem;">
-                University of Leeds, fin. 2017
-              </p>
-            </li>
-            <li class="uni-list">
-              BSc in Physics
-              <p style="font-size: 0.8em; font-style: italic; margin-bottom: 0rem;">
-                University of Leeds
-                <br>
-                fin. 2016
-                <br>2:1
-              </p>
-            </li>
-            <li class="school-list">
-              A-Levels
-              <p style="font-size: 0.8em; font-style: italic; margin-bottom: 0rem;">
-                Enfield Grammar, fin. 2013
-              </p>
-            </li>
-          </ul>
-        </section>
-
-      </section>
-    </section>
+  <section class="bio-section" style="text-align: center;">
+    <h3>About Me</h3>
+    <p style="text-align: left;">
+      I am (currently) a planetary formation postdoctoral researcher at the University of Sheffield. I was born approximately {{ div (sub now.Unix 795657600) 1000000 }} megaseconds ago (as of the last time this website was built). I am a theoretician at heart, and my research interests are the formation of planets, stars and clusters. My current research involves the simulation of planetesimals, my previous work involved the simulation of colliding massive stellar winds, so at this point who knows what I will be working on next!
+    </p>
   </section>
 
-  <hr>
-
-  <section class="row">
-    
-    <h3>Research projects</h3>
-
-    <h4>Influence of Short-Lived Radioisotopes on planetary formation</h4>
-
-    <img src="/about/interior.webp" alt="An image of a series of colliding wind binary systems showing different levels of instability" style="width: 100% ;">
-
-    <small>
-      <i>
-        Credit <a href="https://github.com/FormingWorlds">Forming Worlds Lab</a>
-      </i>
-    </small>
-
-    <p></p>
-
-    <p>
-      My current work involves determining the influence of various radioisotopes on the formation of planetesimals.
-    </p>
-
-    <p>
-      Short-Lived Radioisotopes (SLRs) are responsible for the bulk of heating during the planet formation process in our solar system, the main questions we're asking in this project are:
-
-      <ul>
-        <li>
-          What is the comparative influence of each SLR, is <sup>26</sup>Al a more potent heating source than <sup>60</sup>Fe, for instance?
-        </li>
-        <li>
-          What is the likelihood of a given cluster to undergo Solar System levels of enrichment, and how does the local environmental conditions influence this?
-        </li>
-        <li>
-          What are the mechanisms for SLR pollution of disks, and which are most important?
-        </li>
+  <section style="text-align: center;">
+    <div>
+      <h4>Education</h4>
+          <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.6132E/abstract">PhD in Astrophysics</a>
+          <p>
+            <small>
+              University of Leeds, 2022
+            </small>
+          </p>
+          MPhys in Astrophysics
+          <p>
+            <small>
+              University of Leeds, fin. 2017
+            </small>
+          </p>
+          BSc in Physics
+          <p>
+            <small>
+              University of Leeds, fin. 2016, 2:1
+            </small>
+          </p>
+          A-Levels
+          <p>
+            <small>
+              Enfield Grammar, fin. 2013, AAB
+            </small>
+          </p>
       </ul>
-
-      This research is ongoing, but involves two particular sets of code, 2D geodynamic models, such as those from <a href="https://github.com/FormingWorlds/i2elvis_planet">I2Elvis</a> or <a href="https://github.com/FormingWorlds/Erebus.jl/tree/main/docs">Erebus</a>, as well as <i>N</i>-Body simulations based on the <a href="http://amusecode.org">AMUSE</a> framework. 
-    </p>
-
-    <h4>Colliding Wind Binaries & dust formation</h4>
-    <img src="/about/wr-98a-orbits-stylised.webp" alt="An image of a series of colliding wind binary systems showing different levels of instability" style="width: 100% ;">
-
-    <small>
-      <i>
-        Credit DESY, science communication lab
-      </i>
-    </small>
-
-    <p></p>
-
-    <p>
-      My doctoral thesis, <a href="https://etheses.whiterose.ac.uk/32292/"><i>Numerical Simulations of Dusty Colliding Wind Binaries</i></a>, is fairly self explanatory, as a Colliding Wind Binary is one of those rare astrophysical phenomena that does exactly what it says on the tin. It is a binary system with winds that collide, and dust evolution within these systems is simulated using numerical simulation. This is of course easier said than done, as CWB systems are extremely complicated systems to simulate, due to a horrible mix of extreme conditions and small feature sizes in large domains.
-    </p>
-
-    <p>
-      Over the course of this project I implemented a fast advected scalar dust model that ran inside <a href="https://www.athena-astro.app/">Athena++</a>, an open-source hydrodynamics code for astrophysics. This dust model is highly extensible and capable of simulating growth, destruction and cooling of amorphous carbon dust grains within a CWB environment. I hope to extend this work in the future, incorporating more dust evolution mechanisms and refactoring the dust model to behave as its own separate fluid.
-    </p>
-
-    <h4>Stellar evolution & sub-clustering</h4>
-
-    <img src="/about/ngc2264.webp" alt="The NGC2264 open cluster" style="width: 100%  ;">
-
-    <small>
-      <i>
-        Credit Spitzer
-      </i>
-    </small>
-
-    <p></p>
-
-    <p>
-      Prior to my PhD, I undertook a Master's project with the aim of producing an automated sub-clustering algorithm for open and globular stellar clusters. This sub-clustering algorithm was written and tested on NGC 2264, an archetypal open cluster.
-    </p>
-
-    <p>
-      Another aim of this project was to attempt to map and sub-cluster based on the dynamical motions of stars, this project was undertaken prior to Gaia DR2, and as such there was insufficient data to accomplish these aims.
-    </p>
-
-    <h3>Programming experience</h3>
-    <p>
-      Much of my academic career has involved writing code designed to be integrated into numerics libraries, as such it is fast, multi-threaded and highly reliable. I write my code under the impression that someone else will use it in the future, and as such document it well, and write for legibility. I have a significant deal of experience in Python 2 and 3, C and C++ and R. I'm also particularly familiar with high performance computing libraries such as OpenMPI, OpenMP and Numba.
-    </p>
-
-    <p>
-      I also have a good degree of familiarity in Fortran 90, Julia and Rust and Go. Though I do not use these in my current day-to-day work, I would be extremely excited to be involved in projects using these languages in the future.
-    </p>
-
-    <h3>Other interests</h3>
-
-    <img src="/about/moon.webp" alt="An image of the moon, taken with a canon EOS 550D and a 1000mm reflector telescope" style="width: 100%  ;">
-
-    <p></p>
-
-    <p>
-      I have a number of other interests besides astrophysics, though many of them are not too far removed. I love photography, particularly landscape work and street photography, I dabble in programming for fun, love a good challenge when it comes to hardware repair, and am perhaps overly fond of cooking and baking.
-    </p>
+    </div>
+    <br>
   </section>
-</section> 
-</section> 
+  <section class="interests-education-section" style="text-align: center;">
+    <div class="interests">
+      <h4>Interests</h4>
+      Numerical simulation
+      <br>
+      Planet formation
+      <br>
+      Star cluster evolution
+      <br>
+      Wasting my money on cameras
+      <br>
+    </div>
+  </section>
+
+  </section>
+</section>
+
 
 {{ partial "footer.html"}}

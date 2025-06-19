@@ -1,0 +1,60 @@
+{{ define "main" }}
+<main style="text-align: center;">
+  <div class="row" style="text-align: center;">
+    <h3>
+      Photography
+    </h3>
+  </div>
+
+  <div class="row" style="text-align: left;">
+    I am an avid photographer, with a particular focus in landscape and architectural photography.
+    Here are a few of my favourite photos I have taken over the last few years, broken up into albums.
+  </div>
+
+  {{ range .Data.Pages }}
+    {{ if .Params.portfolio }}
+      <div class="row">
+        <h4>
+              <a href="{{ .Permalink }}" style="text-decoration: none;">Portfolio</a>
+        </h4>
+      </div>
+      <div class="row">
+        {{ partial "index-gallery-wide.html" . }}
+      </div>
+    {{ end }}
+  {{ end }}
+  
+  <div class="row">
+    {{ range (.Data.Pages.GroupByDate "2006") }}
+    <div class="row">
+      <h4>
+        {{ .Key }}
+      </h4>
+    </div>
+    
+    {{ $counter := 1 }}
+    {{ range .Pages }}
+      {{ if not .Params.portfolio }}
+        {{ if eq $counter 1 }}
+          <div class="row">
+        {{ end }}
+        {{ partial "index-gallery.html" . }}
+        <!-- {{ $counter }} -->
+        {{ if eq (mod $counter 3) 0 }}
+          <!-- <br> -->
+        {{ end }}
+        
+        {{ if eq $counter 3 }}
+          </div>
+          {{ $counter = 1 }}
+        {{ else}}
+          {{ $counter = add $counter 1 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  
+</main>
+{{ end }}
