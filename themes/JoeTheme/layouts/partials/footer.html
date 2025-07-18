@@ -2,8 +2,9 @@
   <hr>
   <div class="row" style="margin-bottom: 0px; text-align: center;">
       <small>
-        <span style="display: inline-block; transform: rotate(180deg);">&copy;</span> Joseph Eatson 1995-{{ now.Format "2006" }}, 
-        site last built {{ now.Format "January 2 2006" }}
+        <span style="display: inline-block; transform: rotate(180deg);">&copy;</span> Joseph Eatson 1995-{{ now.Format "2006" }}
+        <br>
+        Site last built {{ now.Format "January 2" }}{{ $day := now.Format "2" }}<sup>{{ if or (eq $day "11") (eq $day "12") (eq $day "13") }}th{{ else if eq (mod (int $day) 10) 1 }}st{{ else if eq (mod (int $day) 10) 2 }}nd{{ else if eq (mod (int $day) 10) 3 }}rd{{ else }}th{{ end }}</sup> {{ now.Format "2006" }} ({{ now.Unix }} seconds since epoch)
         <br>
         Powered by
         <a href="https://gohugo.io/" target="_blank">Hugo</a>,
