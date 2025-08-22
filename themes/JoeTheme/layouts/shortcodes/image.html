@@ -1,0 +1,43 @@
+{{ $image := .Page.Resources.GetMatch ((printf "*%s*" ((.Get "src")))) }}
+{{ $credit := (.Get "credit")}}
+{{ $creditlink := (.Get "creditlink")}}
+
+
+
+{{ if $image }}
+  <div class="row">
+    {{ $ext := $image.MediaType.SubType }}
+    {{ if or (eq $ext "jpeg") (eq $ext "jpg") }}
+      {{ $webp := $image.Resize "1440x q75" }}
+      <picture >
+        <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+        <img src="{{ $image.RelPermalink }}"
+        style="width: auto; max-width: 100%;"
+        loading="lazy">
+      </picture>
+    {{ else }}
+      <img src="{{ $image.RelPermalink }}"
+      style="width: auto; max-width: 100%;"
+      loading="lazy">
+    {{ end }}
+    {{ if $credit }}
+      <div class="row" style="text-align: center;">
+      {{ if $creditlink }}
+        <small>
+          <i>
+            Credit: <a href="{{ $creditlink }}" target="_blank">{{ $credit }}</a>
+          </i>
+          <br>
+        </small>
+      {{ else }}
+        <small>
+          <i>
+            Credit: {{ $credit }}
+          </i>
+          <br>
+        </small>
+      {{ end }}
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

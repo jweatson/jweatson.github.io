@@ -1,0 +1,13 @@
+
+
+<p class="md__image">
+  <img
+    src="{{ .Destination | safeURL }}"
+    alt="{{ .Text }}"
+    {{ with .Title}}
+    title="{{ . }}"{{ end }}
+    style="max-width: 100%; border-radius: 0px;"
+    loading="lazy"
+  />
+</p>
+

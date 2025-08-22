@@ -1,0 +1,14 @@
+{{ if (gt .WordCount 0 ) }}
+  <p style="margin-bottom: 0px;">
+    {{ $timetoread := math.Ceil ( div .WordCount 300.0 ) }}
+    {{ .WordCount }}
+    
+    {{ if eq (int .WordCount) 1 }} word, {{ end }}
+    {{ if gt (int .WordCount) 1 }} words, {{ end }}
+
+    {{ $timetoread }}
+    {{ if eq (int $timetoread) 1 }} minute {{ end }}
+    {{ if gt (int $timetoread) 1 }} minutes {{ end }}
+    to read
+  </p>
+{{ end }}

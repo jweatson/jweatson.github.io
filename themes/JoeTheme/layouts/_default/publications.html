@@ -1,0 +1,146 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+  <div class="row" style="text-align: center;">
+    <h3>
+      Publications
+    </h3>
+  </div>
+
+  <div class="row">
+    Here is a complete list of my publications, with links to the abstracts on the NASA Astrophysics Data System (ADS). If you would like a copy of any of these papers, please feel free to <a href="mailto:joseph@microlens.ing">contact me</a>.
+  </div>
+  
+  <br>
+
+  <div class="row">
+    <div class="row" style="text-align: center;">
+      <h4>
+        2024
+      </h4>
+    </div>
+  
+    {{ partial "publication.html" (dict
+      "title"   "Toward a Unified Injection Model of Short-lived Radioisotopes in <i>N</i>-body Simulations of Star-forming Regions"
+      "authors" "<b>Eatson</b>, Parker & Lichtenberg"
+      "journal" "ApJ"
+      "year"    "2024"
+      "volume"  "977"
+      "issue"   "1"
+      "pages"   "13"
+      "doi"     "10.3847/1538-4357/ad8642"
+      "ads"    "https://ui.adsabs.harvard.edu/abs/2024ApJ...977...13E/abstract")
+    }}
+
+    {{ partial "publication.html" (dict
+      "title"   "Devolatilization of extrasolar planetesimals by <sup>60</sup>Fe and <sup>26</sup>Al heating"
+      "authors" "<b>Eatson</b>, Lichtenberg, Parker & Gerya"
+      "journal" "MNRAS"
+      "year"    "2024"
+      "volume"  "528"
+      "issue"   "4"
+      "pages"   "6619-6630"
+      "doi"     "10.1093/mnras/stae438"
+      "ads"     "https://ui.adsabs.harvard.edu/abs/2024MNRAS.528.6619E/abstract")
+    }}
+
+    <div class="row" style="text-align: center;">
+      <br>
+      <h4>
+        2023
+      </h4>
+    </div>
+
+    <div class="row">
+      <b>
+        <a href="https://etheses.whiterose.ac.uk/id/eprint/32292/" target="_blank">Numerical Simulations of Dusty Colliding Wind Binaries</a>.
+      </b>
+      <br style="padding: 0;">
+      <b>Eatson</b> (2013), PhD Thesis, University of Leeds. <a href="https://etheses.whiterose.ac.uk/id/eprint/32292/">White Rose eThesis</a>
+    </div>
+    
+    <div class="row" style="text-align: center;">
+      <br>
+      <h4>
+        2022
+      </h4>
+    </div>
+
+    {{ partial "publication.html" (dict
+      "title"   "Exploring dust growth in the episodic WCd system WR140"
+      "authors" "<b>Eatson</b>, Pittard & Van Loo"
+      "journal" "MNRAS"
+      "year"    "2022"
+      "volume"  "517"
+      "issue"   "4"
+      "pages"   "4705-4713"
+      "doi"     "10.1093/mnras/stac3000"
+      "ads"     "https://ui.adsabs.harvard.edu/abs/2022MNRAS.517.4705E/abstract")
+    }}
+
+    {{ partial "publication.html" (dict
+      "title"   "An exploration of dust grain growth within WCd systems using an advected scalar dust model"
+      "authors" "<b>Eatson</b>, Pittard & Van Loo"
+      "journal" "MNRAS"
+      "year"    "2022"
+      "volume"  "516"
+      "issue"   "4"
+      "pages"   "6132-6144"
+      "doi"     "10.1093/mnras/stac2617"
+      "ads"     "https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.6132E/abstract")
+    }}
+    </div>
+    <br>
+    <div class="row">
+      <h3>
+        Conferences Attended
+      </h3>
+    </div>
+
+    {{ partial "conference.html" (dict
+      "type"     "Talk"
+      "title"    "SLR disk enrichment through AGB interloper stars"
+      "name"     "Detection and Dynamics of Exoplanets"
+      "location" "Coimbra, Portugal"
+      "date"     "2025"
+      "link"     "/talks/2025-coimbra-talk-compressed.pdf")
+    }}
+
+    {{ partial "conference.html" (dict
+    "type"     "Attended"
+    "name"     "UK Exoplanet Meeting"
+    "location" "Leeds, UK"
+    "date"     "2025")
+    }}
+
+    {{ partial "conference.html" (dict
+      "type"     "Talk"
+      "title"    "Heating of planetesimals from <sup>60</sup>Fe & <sup>26</sup>Al"
+      "name"     "External Irradiated Disks Meeting at the Royal Society"
+      "location" "London, UK"
+      "date"     "2024"
+      "link"     "/talks/2024-london-talk-compressed.pdf")
+    }}
+
+    {{ partial "conference.html" (dict
+      "type"     "Poster"
+      "title"    "Planetesimal heating from the SLRs <sup>60</sup>Fe & <sup>26</sup>Al"
+      "name"     "Rocky Worlds III"
+      "location" "Zürich, Switzerland"
+      "date"     "2024"
+      "link"     "/posters/2023-kyoto-poster.pdf")
+    }}
+
+    {{ partial "conference.html" (dict
+      "type"     "Poster"
+      "title"    "Devolatilization of extrasolar planetesimals by <sup>60</sup>Fe and <sup>26</sup>Al heating"
+      "name"     "Protostars & Planets VII"
+      "location" "Kyoto, Japan"
+      "date"     "2023"
+      "link"     "/posters/2023-kyoto-poster.pdf")
+    }}
+    
+  </div>
+</div>
+
+{{ partial "footer.html" . }}

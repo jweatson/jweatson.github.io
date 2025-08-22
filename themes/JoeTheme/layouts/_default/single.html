@@ -1,0 +1,26 @@
+{{ partial "header.html" . }}
+
+<!-- Load katex if "math = true" in markdown document -->
+{{ if .Params.Math }}{{ partial "helpers/katex.html" . }}{{ end }}
+
+<div class="container">
+  <div class="row article-details">
+      <h2>{{ .Params.Title }}</h2>
+      <p style="margin-bottom: 0px;">
+        Published: <i>{{ .Date | time.Format ":date_full" }}</i>
+      </p>
+      <p style="margin-bottom: 0px;">
+        Filed under: <i>{{ partial "tags.html" .}}</i>
+      </p>
+
+      {{ partial "wordcount.html" . }}
+  </div>
+
+  {{ partial "toc.html" . }}
+  
+  <div class="row">
+    {{ .Content }}
+  </div>
+</div>
+
+{{ partial "footer.html" }}

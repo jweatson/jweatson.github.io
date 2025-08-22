@@ -1,0 +1,27 @@
+{{ partial "head.html" }}
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<body data-instant-intensity="mousedown">
+
+<div class="container" style="text-align: center;">
+  <hr>
+  <div class="row">
+    <div class="twelve columns" style="margin-top: 0%">
+      <h1>
+        <a href="/" style="text-decoration: none;">
+        Joseph Eatson
+        </a>
+      </h1>
+
+      <nav>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        {{ end }}
+      </nav>
+    </div>
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <p>
+    <b>
+      {{ .type }}:
+      {{ if .title }}
+        {{ if .link }}
+          <a href="{{ .link }}" target="_blank">{{ .title | safeHTML }}</a><br>At:
+        {{ else }}
+          {{ .title | safeHTML }}<br>
+        {{ end }}
+      {{ end }}
+    </b>
+    {{ if .name }}
+    <i>
+      {{ .name }},
+    </i>
+    {{ end }}
+    {{ .location }} ({{ .date }})
+  </p>
+</div>

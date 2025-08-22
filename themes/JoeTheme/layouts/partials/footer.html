@@ -1,0 +1,24 @@
+<div class="container">
+  <hr>
+  <div class="row" style="margin-bottom: 0px; text-align: center;">
+      <small>
+        <span style="display: inline-block; transform: rotate(180deg);">&copy;</span> Joseph Eatson 1995-{{ now.Format "2006" }}
+        <br>
+        Site last built {{ now.Format "January 2" }}{{ $day := now.Format "2" }}<sup>{{ if or (eq $day "11") (eq $day "12") (eq $day "13") }}th{{ else if eq (mod (int $day) 10) 1 }}st{{ else if eq (mod (int $day) 10) 2 }}nd{{ else if eq (mod (int $day) 10) 3 }}rd{{ else }}th{{ end }}</sup> {{ now.Format "2006" }} ({{ now.Unix }} seconds since epoch)
+        <br>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a>,
+        <a href="http://getskeleton.com/" target="_blank">Skeleton</a>,
+        <a href="http://instantclick.io" target="_blank">InstantClick</a>,
+        <a href="https://www.nordtheme.com" target="_blank">Nord</a>,
+        <a href="https://github.com/be5invis/Iosevka" target="_blank">Iosevka</a>
+        &
+        <a href="https://en.wikipedia.org/wiki/Caffeine" target="_blank">C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></a>
+      </small>
+  </div>
+  <hr>
+</div>
+<script src="/js/instantclick.min.js" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{{ $original := .Page.Resources.GetMatch (printf "*%s*" (.Get 0)) }}
+{{ $description := .Get 1 }}
+
+{{ .Scratch.Set "big" ($original.Resize "2160x Lanczos webp photo") }}
+{{ .Scratch.Set "small" ($original.Resize "720x Lanczos webp photo") }}
+
+{{ $big := .Scratch.Get "big" }}
+{{ $small := .Scratch.Get "small" }}
+
+
+<figure style="padding-bottom: 10px; border-radius: 5px;">
+  <a href="{{$original}}">
+		<picture>
+			<source
+				srcset="{{ $big.RelPermalink }}"
+				media="(min-width: 720px)"
+				type="image/webp"
+			/>
+			<source
+				srcset="{{ $small.RelPermalink }}"
+				type="image/webp"
+			/>
+			<img
+				style="max-width: 100%; width: auto; height: auto; border-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;"
+				src="{{ $small.RelPermalink }}"
+				alt="{{ $description }}"
+				loading="lazy"
+			/>
+		</picture>
+  </a>
+	<hr style="margin: 0px;">
+	<figcaption>
+	<small>
+	<i>
+		{{ with .Inner }}
+		{{ . }}
+		{{ end }}
+		{{ with $description }}
+		{{ . }}
+		{{ end }}
+		{{ with $original.Exif }}
+		<hr style="margin: 0px; border-top: 0px; ">
+		<a href="{{$original}}"><img class="nav-icon" src="/icon/camera.svg" alt=""></a>
+		{{ with .Date }}
+		Taken {{ .Format "01/02/06" }}{{ end }}
+		{{ with .Tags.Make }} - {{ . }}{{ end }}
+		{{ with .Tags.Model }} {{ . }}{{ end }}
+		{{ with .Tags.LensMake }} - {{ . }}{{ end }}
+		{{ with .Tags.LensModel }} {{ . }}{{ end }}
+		{{ with .Tags.FocalLength }} - {{ . }}mm{{ end }}
+		{{ with .Tags.ExposureTime }} - {{ . }}s{{ end }}
+		{{ with .Tags.ApertureValue }} - f/{{ lang.FormatNumberCustom 1 . }}{{ end }}
+		{{ with .Tags.ISO }} @ ISO {{ . }}{{ end }}
+		{{ end }}
+	</i>
+	</small>
+</figcaption>
+<hr style="margin: 0px;">
+</figure>  

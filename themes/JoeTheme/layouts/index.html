@@ -1,0 +1,44 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+  <div class="row">
+    <img src="/it-me.webp" alt="It's me!" style="width: 100%;">
+  </div>
+</div>
+
+<div class="container" style="text-align: center;">
+
+  <div class="row" style="margin-top: 0.5em;">
+    <h3>Work</h3>
+    <p>
+      Emails: <a href="mailto:jweatson@arizona.edu">jweatson@arizona.edu</a> or <a href="mailto:j.w.eatson@sheffield.ac.uk">j.w.eatson@sheffield.ac.uk</a>
+    </p>
+    <p>
+    <a href="https://orcid.org/0000-0002-5160-8871" target="_blank">ORCID</a>
+    </p>
+    <p>
+    <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Eatson%2C%20Joseph%20W.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">Publications</a> - 
+    <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22%5EEatson%2C%20Joseph%20W.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">as first author</a>
+    </p>
+    <p>
+    <a href="https://github.microlens.ing" target="_blank">GitHub - @jweatson</a>
+    </p>
+    <h3>Personal</h3>
+    <p>
+      {{ $recentPhoto := first 1 (where .Site.RegularPages "Section" "photos") }}
+      {{ with index $recentPhoto 0 }}
+        <div class="row" style="margin-top: 1em;">
+          Latest photos: 
+          <a href="{{ .RelPermalink }}">
+            {{ .Title }} ({{ .Date.Format "January 2006" }})
+          </a>
+        </div>
+      {{ end }}
+    </p>
+    <p>
+    <a href="https://instagram.microlens.ing" target="_blank">Instagram - @jweatson</a>
+    </p>
+    </div>
+</div>
+
+{{ partial "footer.html"}}

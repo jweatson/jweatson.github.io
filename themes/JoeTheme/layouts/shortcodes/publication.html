@@ -1,0 +1,7 @@
+<div class="row">
+  <b>
+    <a href="https://doi.org/{{ .Get "doi" }}" target="_blank">{{ .Get "title" | safeHTML }}</a>
+  </b>
+  <br style="padding: 0;">
+  <i>{{ .Get "authors" | safeHTML }} ({{ .Get "year" }}) {{ .Get "journal" }}, {{ .Get "volume" }}, {{ .Get "issue" }} ({{ .Get "pages" }}). <a href="{{ .Get "ads" }}" target="_blank">ADS</a></i>
+</div>

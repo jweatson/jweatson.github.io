@@ -1,0 +1,21 @@
+{{ $video := .Page.Resources.GetMatch (printf "*%s*" (.Get 0)) }}
+{{ $description := .Get 1 }}
+
+<figure>
+  <video controls style="max-width: 100%;">
+    <source src="{{$video}}" type="video/webm">
+    Your browser does not support the video tag.
+  </video> 
+  <hr style="margin: 0px;">
+	<figcaption style="padding-left: 1em;">
+	<small>
+	{{ with .Inner }}
+	{{ . }}
+	{{ else }}
+	<i>
+		{{ $description }}
+	</i>
+	{{ end }}
+	</small>
+</figcaption>
+</figure>

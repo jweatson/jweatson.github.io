@@ -1,0 +1,112 @@
+
+
+  {{ $link := .Permalink }}
+  {{ $headerScratch := newScratch }}
+  {{ $imageArray := slice }}
+  {{ $hoverArray := slice }}
+  {{ $imageCount := 0 }}
+
+  {{ range .Resources.Match "*.{jpg,jpeg,png,gif}" }}
+    {{ $thumbnail := . }}
+    {{ $imageCount = add $imageCount 1 }}
+
+    {{ with $thumbnail }}
+      {{ with .Fill "1050x420 Lanczos png" }}
+        {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "81A1C1" "5E81AC" "2E3440") }}
+        {{ $filter := images.Dither $opts }}
+        {{ with images.Filter $filter . }}
+          {{ $headerScratch.Set (printf "thumbnail_nohover_%d" $imageCount) .RelPermalink }}
+          {{ $imageArray = $imageArray | append .RelPermalink }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ with $thumbnail }}
+      {{ with .Fill "1050x420 Lanczos png" }}
+        {{ $opts := dict "method" "Atkinson" "colors" (slice "ECEFF4" "D08770" "BF616A" "2E3440") }}
+        {{ $filter := images.Dither $opts }}
+        {{ with images.Filter $filter . }}
+          {{ $headerScratch.Set (printf "thumbnail_hover_%d" $imageCount) .RelPermalink }}
+          {{ $hoverArray = $hoverArray | append .RelPermalink }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ $headerScratch.Set "imageArray" $imageArray }}
+  {{ $headerScratch.Set "hoverArray" $hoverArray }}
+  {{ $headerScratch.Set "imageCount" $imageCount }}
+
+  <div class="row">
+    <span>
+      <picture>
+        <a href="{{ $link }}" style="text-decoration: none;">
+          <img
+            id="slideshow"
+            class="inline-img"
+            style="width: 100%"
+            src="{{ index $imageArray 0 }}"
+            onmouseover="this.src={{ index $hoverArray 0 }}"
+            onmouseout="this.src={{ index $imageArray 0 }}"
+            loading="lazy"
+          >
+        </a>
+      </picture>
+    </span>
+  </div>
+  <p></p>
+
+    <script>
+      let imageArray = {{ $headerScratch.Get "imageArray" }};
+      let hoverArray = {{ $headerScratch.Get "hoverArray" }};
+      let currentIndex = 0;
+      const slideshow = document.getElementById('slideshow');
+
+      function changeImage() {
+        currentIndex = Math.floor(Math.random() * imageArray.length);
+        const newImage = imageArray[currentIndex];
+        const newHoverImage = hoverArray[currentIndex];
+
+        // Create a temporary image element to preload the new image
+        const tempImage = new Image();
+        tempImage.src = newImage;
+        // tempImage.onmouseover = function() {
+        //   slideshow.src = newHoverImage;
+        // }
+        // tempImage.onmouseout = function() {
+        //   slideshow.src = newImage;
+        // }
+        tempImage.style = "inherit";
+        tempImage.style.position = 'absolute';
+        tempImage.style.top = "inherit";
+        tempImage.style.left = '0px';
+        tempImage.style.width = "inherit";
+        tempImage.style.height = slideshow.clientHeight + 'px';
+        tempImage.style.opacity = 0;
+        tempImage.style.transition = 'opacity 1.0s';
+        slideshow.parentNode.appendChild(tempImage);
+
+        tempImage.onload = function() {
+          // Fade in the new image
+          tempImage.style.opacity = 1;
+
+          // After the fade in transition, change the image and remove the temporary image
+          setTimeout(function() {
+            slideshow.src = newImage;
+            slideshow.onmouseover = function() {
+              slideshow.src = newHoverImage;
+            }
+            slideshow.onmouseout = function() {
+              slideshow.src = newImage;
+            }
+            slideshow.style.opacity = 1;
+            slideshow.parentNode.removeChild(tempImage);
+          }, 1000); // Match this duration with the CSS transition duration
+        }
+      }
+
+      setInterval(changeImage, 5000); // Change image every 5 seconds
+    </script>
+    
+    <span id="bastard"></span>
+

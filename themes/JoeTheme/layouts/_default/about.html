@@ -1,0 +1,120 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+  <div class="row">
+    <img src="/it-me.webp" alt="It's me!" style="width: 100%;">
+  </div>
+</div>
+
+<section class="container" style="text-align: left;">
+
+  <section class="bio-section" style="text-align: center;">
+    <h3>About Me</h3>
+    <p style="text-align: left;">
+      I am (currently) a planetary formation postdoctoral researcher at the University of Sheffield. In a few months I'll be working as a postdoctoral researcher at the University of Arizona.
+    </p>
+    <p style="text-align: left;">
+      I was born approximately {{ div (sub now.Unix 795657600) 1000000 }} megaseconds ago (as of the last time this website was built). I love to shoot both film and digital cameras, I quite like a hike, and I love to cook.
+    </p>
+    <p style="text-align: left;">
+      I am a theoretician at heart, and my research interests are the formation and evolution of planets, stars and clusters. My current research involves the simulation of planetesimals, my previous work involved the simulation of colliding massive stellar winds, and my future work is simulating the climate of exoplanets!
+    </p>
+  </section>
+
+  <section style="text-align: center;">
+    <h4>Research Positions</h4>
+    <h5>University of Arizona, USA</h5>
+    <i>
+      <p>
+        Postdoctoral Researcher, 2025-&gt;
+        <br>
+        Climates of sub-Neptunes
+        <br>
+        Supervisor: Dr. Tyler Robinson
+      </p>
+    </i>
+    <h5>University of Sheffield, UK</h5>
+    <i>
+      <p>
+        Postdoctoral Researcher, 2022-2025
+        <br>
+        SLR enrichment of planetesimals
+        <br>
+        Supervisor: Dr. Richard Parker
+      </p>
+    </i>
+    <h5>University of Leeds, UK</h5>
+    <i>
+      <p>
+        PhD Researcher, 2017-2022
+        <br>
+        Dust evolution in Colliding Wind Binaries
+        <br>
+        Supervisor: Prof. Julian Pittard
+      </p>
+    </i>
+  </section>
+
+  <section style="text-align: center;">
+      <h4>Education</h4>
+      
+      <h5>
+        PhD in Astrophysics
+      </h5>
+      <i>
+        <p>
+          University of Leeds, 2017-2022
+          <br>
+          <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.6132E/abstract">Numerical Simulations of Dusty Colliding Wind Binaries</a>
+        </p>
+      </i>
+      
+      <h5>MPhys in Astrophysics</h5>
+      <i>
+        <p>
+          University of Leeds, 2016-2017
+          <br>
+          Graduated with Merit
+        </p>
+      </i>
+      
+      <h5>BSc in Physics</h5>
+      <i>
+        <p>
+          University of Leeds, 2013-2016
+          <br>
+          Graduated with 2:1 Honours
+        </p>
+      </i>
+      
+      <h5>Secondary Education</h5>
+      <i>
+        <p>
+          Enfield Grammar School, 2006-2013
+          <br>
+          A-levels: AAB
+          <br>
+          GCSEs: 6 As, 6 Bs, 1 C
+        </p>
+      </i>  
+  </section>
+
+  <section class="interests-education-section" style="text-align: center;">
+    <div class="interests">
+      <h4>Interests</h4>
+      Numerical simulation
+      <br>
+      Planet formation
+      <br>
+      Star cluster evolution
+      <br>
+      Wasting my money on cameras
+      <br>
+    </div>
+  </section>
+
+  </section>
+</section>
+
+
+{{ partial "footer.html"}}

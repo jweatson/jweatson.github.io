@@ -1,0 +1,10 @@
+
+{{ if (.Params.Toc) }}
+<hr>
+  <div class="row">
+    {{ .TableOfContents }}
+  </div>
+  <hr style="margin-top: 0px;">
+{{ else }}
+<hr>
+{{ end }}

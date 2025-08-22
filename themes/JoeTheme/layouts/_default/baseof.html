@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+{{- partial "header.html" . -}}
+
+<div class="container" style="padding-top: 0%;">
+    <div class="row">
+        <div class="twelve columns">
+            {{- block "main" . }}{{- end }}
+        </div>
+    </div>
+</div>
+    
+{{- partial "footer.html" . -}}
