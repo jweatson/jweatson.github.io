@@ -98,6 +98,13 @@
     </div>
 
     {{ partial "conference.html" (dict
+    "type"     "Attended"
+    "name"     "The Solar System in Context"
+    "location" "Tucson, AZ, USA"
+    "date"     "2025")
+    }}
+
+    {{ partial "conference.html" (dict
       "type"     "Talk"
       "title"    "SLR disk enrichment through AGB interloper stars"
       "name"     "Detection and Dynamics of Exoplanets"
