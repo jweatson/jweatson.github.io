@@ -3,5 +3,5 @@
     <a href="https://doi.org/{{.doi}}" target="_blank">{{ .title | safeHTML }}</a>
   </b>
   <br style="padding: 0;">
-  {{ .authors | safeHTML }} ({{ .year }}) {{ .journal }}, {{ .volume }}, {{ .issue }} ({{ .pages }}). <a href="{{.ads}}" target="_blank">ADS</a>
+  {{ .authors | safeHTML }} ({{ .year }}) {{ .journal }}{{ if .volume }}, {{ .volume }}{{ end }}{{ if .issue }}, {{ .issue }}{{ end }}{{ if .pages }} ({{ .pages }}){{ end }}. <a href="https://ui.adsabs.harvard.edu/abs/{{.ads}}/abstract" target="_blank">ADS</a>/<a href="https://scixplorer.org/abs/{{.ads}}/abstract" target="_blank">SciX</a>
 </div>
